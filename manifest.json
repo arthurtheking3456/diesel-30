@@ -1,0 +1,17 @@
+{
+  "name": "Diesel 3.0 — Ghid interactiv",
+  "short_name": "Diesel 3.0",
+  "description": "8 componente motor diesel 3.0L cu DTC-uri, probleme frecvente și costuri",
+  "start_url": "./index.html",
+  "id": "/diesel-30/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#050810",
+  "theme_color": "#e85d00",
+  "lang": "ro",
+  "icons": [
+    {"src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"},
+    {"src": "./icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "apple touch icon"}
+  ]
+}

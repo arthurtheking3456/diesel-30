@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover,maximum-scale=5.0"/>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Diesel 3.0">
+<meta name="theme-color" content="#e85d00">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>Diesel 3.0 — Ghid interactiv & DTC-uri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-0:#050810;--bg-1:#0a0f1a;--bg-2:#111826;--bg-3:#19223a;
+  --panel:rgba(15,20,35,0.8);--panel-strong:rgba(8,12,24,0.96);
+  --line:rgba(255,255,255,0.08);--line-strong:rgba(255,255,255,0.14);
+  --text:#e8ecf3;--text-dim:#8a93a8;--text-mute:#5b6379;
+  --accent:#e85d00;--accent-glow:#ff7a1a;--accent-soft:rgba(232,93,0,0.14);
+  --danger:#ff4d4d;--warn:#ffb84d;--ok:#2ecc71;--info:#4a9eff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg-0);color:var(--text);font-family:'Manrope',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body{min-height:100vh;background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(232,93,0,0.15),transparent 60%),radial-gradient(ellipse 60% 40% at 80% 100%,rgba(20,50,150,0.08),transparent 70%),linear-gradient(180deg,var(--bg-0) 0%,var(--bg-1) 50%,var(--bg-0) 100%);}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.016) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.016) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+
+header{position:relative;z-index:2;padding:max(48px,calc(env(safe-area-inset-top)+24px)) 32px 24px;text-align:center;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.22em;color:var(--accent);padding:6px 14px;border:1px solid rgba(232,93,0,0.35);background:var(--accent-soft);border-radius:100px;text-transform:uppercase;}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:pulse 1.8s ease-in-out infinite;}
+h1{font-family:'Saira Condensed',sans-serif;font-weight:900;font-size:clamp(44px,9vw,108px);letter-spacing:-0.02em;line-height:0.92;margin:18px 0 12px;background:linear-gradient(180deg,#fff 0%,#a4abbf 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+h1 .accent{color:var(--accent);-webkit-text-fill-color:var(--accent);}
+.sub{color:var(--text-dim);font-size:clamp(14px,1.4vw,16px);max-width:680px;margin:0 auto;line-height:1.55;}
+
+/* DIAGRAM */
+.diagram-wrap{max-width:1200px;margin:32px auto 0;padding:0 16px;}
+.engine-diagram{width:100%;background:var(--bg-2);border:1px solid var(--line-strong);border-radius:20px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(0,0,0,0.6);aspect-ratio:16/9;}
+.engine-diagram svg{width:100%;height:100%;}
+
+/* INDEX */
+.index{max-width:1200px;margin:32px auto 0;padding:0 16px 32px;position:relative;z-index:1;}
+.index-title{font-family:'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:0.08em;font-size:14px;color:var(--text-dim);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.index-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--line-strong),transparent);}
+.index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;}
+.idx-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;transition:all 0.25s cubic-bezier(.2,.8,.2,1);backdrop-filter:blur(20px);display:flex;align-items:center;gap:14px;text-align:left;font-family:inherit;color:var(--text);width:100%;}
+.idx-card:hover{border-color:var(--accent);transform:translateY(-2px);background:var(--panel-strong);box-shadow:0 12px 32px rgba(0,0,0,0.4),0 0 0 1px var(--accent) inset;}
+.idx-card .num{width:38px;height:38px;border-radius:9px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;flex-shrink:0;}
+.idx-card .info{flex:1;min-width:0;}
+.idx-card .info .name{font-weight:700;font-size:15px;margin-bottom:3px;}
+.idx-card .info .meta{font-size:12px;color:var(--text-dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/* DTC SEARCH */
+.dtc-section{max-width:1200px;margin:0 auto;padding:0 16px 48px;position:relative;z-index:1;}
+.dtc-bar{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:12px;backdrop-filter:blur(20px);}
+.dtc-bar input{flex:1;background:transparent;border:none;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:14px;padding:4px 0;outline:none;}
+.dtc-bar input::placeholder{color:var(--text-mute);}
+.dtc-results{margin-top:12px;display:none;background:var(--panel-strong);border:1px solid var(--line);border-radius:14px;max-height:360px;overflow-y:auto;}
+.dtc-results.active{display:block;}
+.dtc-result-item{padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:background 0.15s;display:flex;gap:12px;align-items:flex-start;}
+.dtc-result-item:last-child{border-bottom:none;}
+.dtc-result-item:hover{background:rgba(232,93,0,0.07);}
+.dtc-result-item .code-tag{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--accent);background:var(--accent-soft);padding:4px 8px;border-radius:6px;flex-shrink:0;white-space:nowrap;}
+.dtc-result-item .res-desc{font-size:14px;color:var(--text);margin-bottom:4px;}
+.dtc-result-item .res-component{font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;}
+
+/* MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(5,8,16,0.92);backdrop-filter:blur(8px);z-index:100;display:none;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity 0.25s;}
+.modal-backdrop.active{display:flex;opacity:1;}
+.modal{background:linear-gradient(180deg,var(--bg-2) 0%,var(--bg-1) 100%);border:1px solid var(--line-strong);border-radius:20px;width:100%;max-width:1100px;max-height:92vh;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.8);transform:translateY(20px) scale(0.98);opacity:0;transition:all 0.3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;}
+.modal-backdrop.active .modal{transform:translateY(0) scale(1);opacity:1;}
+.modal-head{display:flex;align-items:center;gap:16px;padding:18px 22px;border-bottom:1px solid var(--line);flex-shrink:0;}
+.modal-head .num{width:44px;height:44px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:18px;box-shadow:0 0 24px rgba(232,93,0,0.5);}
+.modal-head .titles{flex:1;min-width:0;}
+.modal-head .titles .kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--accent);text-transform:uppercase;margin-bottom:4px;}
+.modal-head h2{font-family:'Saira Condensed',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.01em;}
+.close-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid var(--line);color:var(--text);cursor:pointer;font-size:20px;transition:all 0.2s;display:flex;align-items:center;justify-content:center;}
+.close-btn:hover{background:rgba(255,77,77,0.15);border-color:var(--danger);color:var(--danger);transform:rotate(90deg);}
+
+.tab-bar{display:flex;padding:0 22px;border-bottom:1px solid var(--line);flex-shrink:0;background:var(--bg-1);overflow-x:auto;scrollbar-width:thin;}
+.tab{background:transparent;border:none;color:var(--text-dim);font-family:inherit;font-weight:600;font-size:13px;padding:14px 16px;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;display:flex;align-items:center;gap:8px;}
+.tab .tab-badge{background:var(--bg-3,#19223a);color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:700;}
+.tab:hover{color:var(--text);}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.tab.active .tab-badge{background:var(--accent-soft);color:var(--accent);}
+
+.modal-body{display:grid;grid-template-columns:1fr 1fr;flex:1;overflow:hidden;min-height:0;}
+.modal-icon-panel{background:var(--bg-1);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;border-right:1px solid var(--line);}
+.modal-icon-panel .big-icon{font-size:96px;margin-bottom:16px;}
+.modal-icon-panel .comp-name{font-family:'Saira Condensed',sans-serif;font-size:22px;font-weight:700;text-align:center;color:var(--text);}
+.modal-icon-panel .comp-loc{font-size:13px;color:var(--text-dim);text-align:center;margin-top:8px;line-height:1.5;}
+.modal-icon-panel .severity{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap;justify-content:center;}
+.modal-icon-panel .sev-badge{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;}
+.modal-content{padding:22px 24px;overflow-y:auto;background:var(--panel-strong);scroll-behavior:smooth;}
+.modal-content::-webkit-scrollbar{width:8px;}
+.modal-content::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:4px;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;animation:fadeIn 0.2s ease;}
+
+.section-title{font-family:'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:0.06em;font-size:13px;color:var(--text-dim);margin:18px 0 10px;display:flex;align-items:center;gap:10px;}
+.section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);}
+.section-title:first-child{margin-top:0;}
+
+.info-row{display:flex;gap:14px;padding:14px;background:rgba(255,255,255,0.025);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;}
+.info-row .icon{width:36px;height:36px;border-radius:9px;background:var(--accent-soft);border:1px solid rgba(232,93,0,0.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.info-row .label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:var(--accent);text-transform:uppercase;margin-bottom:4px;}
+.info-row .value{font-size:14px;line-height:1.5;color:var(--text);font-weight:500;}
+
+.problem-list{display:flex;flex-direction:column;gap:8px;}
+.problem-item{background:rgba(255,255,255,0.02);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:8px;padding:12px 14px;}
+.problem-item .sym{font-weight:700;font-size:14px;color:var(--text);margin-bottom:6px;}
+.problem-item .meta{font-size:12.5px;line-height:1.45;color:var(--text-dim);}
+.problem-item .meta strong{color:var(--text);font-weight:600;}
+.problem-item .fix{margin-top:6px;font-size:12.5px;color:var(--ok);}
+
+.dtc-list{display:flex;flex-direction:column;gap:6px;}
+.dtc-item{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:start;padding:10px 12px;background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:8px;transition:all 0.2s;}
+.dtc-item:hover{background:rgba(232,93,0,0.06);border-color:rgba(232,93,0,0.3);}
+.dtc-item .code{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--accent);background:var(--accent-soft);padding:6px 10px;border-radius:6px;text-align:center;border:1px solid rgba(232,93,0,0.25);}
+.dtc-item .desc{font-size:13.5px;line-height:1.45;color:var(--text);padding-top:6px;}
+
+.steps-list{counter-reset:step;}
+.step{counter-increment:step;padding:10px 14px 10px 44px;margin-bottom:8px;background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:8px;position:relative;font-size:13.5px;line-height:1.5;}
+.step::before{content:counter(step);position:absolute;left:10px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;}
+.step.no-number{padding-left:14px;}
+.step.no-number::before{display:none;}
+.tool-list{display:flex;flex-direction:column;gap:6px;}
+.tool-item{padding:9px 12px;background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:6px;font-size:13px;color:var(--text);display:flex;align-items:center;gap:10px;}
+.tool-item::before{content:'🔧';font-size:14px;}
+.cost-table{display:flex;flex-direction:column;gap:4px;}
+.cost-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:8px;font-size:13px;}
+.cost-row .item{color:var(--text);flex:1;}
+.cost-row .price{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);white-space:nowrap;}
+.cost-disclaimer{margin-top:12px;padding:10px 14px;background:rgba(255,184,77,0.06);border:1px solid rgba(255,184,77,0.18);border-radius:8px;font-size:12px;color:var(--warn);line-height:1.5;}
+.tip-box{padding:16px 18px;background:linear-gradient(135deg,rgba(232,93,0,0.08),rgba(232,93,0,0.02));border:1px solid rgba(232,93,0,0.25);border-left:4px solid var(--accent);border-radius:10px;font-size:13.5px;line-height:1.6;color:var(--text);white-space:pre-wrap;}
+.tip-box .tip-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;display:block;font-weight:700;}
+
+.nav-row{display:flex;gap:10px;padding:14px 22px;border-top:1px solid var(--line);background:var(--bg-1);flex-shrink:0;padding-bottom:max(14px,calc(env(safe-area-inset-bottom)+10px));}
+.nav-btn{flex:1;padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid var(--line);color:var(--text);cursor:pointer;font-family:inherit;font-weight:600;font-size:13px;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.nav-btn:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft);color:var(--accent);}
+.nav-btn:disabled{opacity:0.3;cursor:not-allowed;}
+
+@media(max-width:860px){
+  .modal-body{grid-template-columns:1fr;overflow-y:auto;}
+  .modal-icon-panel{padding:24px;flex-direction:row;gap:20px;border-right:none;border-bottom:1px solid var(--line);}
+  .modal-icon-panel .big-icon{font-size:64px;margin-bottom:0;}
+  .modal-icon-panel .severity{margin-top:8px;}
+  .dtc-item{grid-template-columns:90px 1fr;}
+}
+@media(max-width:600px){
+  .modal-backdrop{padding:0;}
+  .modal{max-height:100vh;border-radius:0;}
+  .modal-head h2{font-size:22px;}
+  .tab{font-size:12px;padding:12px 12px;}
+}
+
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+footer{text-align:center;color:var(--text-mute);padding:24px 16px;padding-bottom:max(48px,calc(env(safe-area-inset-bottom)+24px));font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:0.08em;position:relative;z-index:1;}
+footer span{color:var(--accent);}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow"><span class="dot"></span>Motor diesel generic · 3.0L Common Rail</div>
+  <h1>DIESEL <span class="accent">3.0</span></h1>
+  <p class="sub">8 componente critice ale motorului diesel 3.0L — probleme frecvente, coduri DTC OBD-II, pași de verificare și costuri orientative. Click pe orice card pentru detalii complete.</p>
+</header>
+
+<div class="diagram-wrap">
+  <div class="engine-diagram">
+    <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="engGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#1a2540"/>
+          <stop offset="100%" stop-color="#050810"/>
+        </radialGradient>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M1 1L9 5L1 9" fill="none" stroke="#e85d00" stroke-width="1.5" stroke-linecap="round"/>
+        </marker>
+      </defs>
+      <!-- Background -->
+      <rect width="1200" height="675" fill="url(#engGrad)"/>
+      <!-- Grid subtle -->
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      </pattern>
+      <rect width="1200" height="675" fill="url(#grid)"/>
+
+      <!-- Engine block schematic -->
+      <rect x="350" y="150" width="500" height="340" rx="20" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <text x="600" y="130" font-family="Saira Condensed,sans-serif" font-size="28" font-weight="700" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="4">MOTOR 3.0L DIESEL</text>
+
+      <!-- Cylinders V6 hint -->
+      <g opacity="0.4">
+        <rect x="400" y="200" width="60" height="100" rx="8" fill="rgba(100,130,200,0.15)" stroke="rgba(100,130,200,0.3)" stroke-width="1.5"/>
+        <rect x="480" y="200" width="60" height="100" rx="8" fill="rgba(100,130,200,0.15)" stroke="rgba(100,130,200,0.3)" stroke-width="1.5"/>
+        <rect x="560" y="200" width="60" height="100" rx="8" fill="rgba(100,130,200,0.15)" stroke="rgba(100,130,200,0.3)" stroke-width="1.5"/>
+        <rect x="640" y="200" width="60" height="100" rx="8" fill="rgba(100,130,200,0.15)" stroke="rgba(100,130,200,0.3)" stroke-width="1.5"/>
+        <rect x="720" y="200" width="60" height="100" rx="8" fill="rgba(100,130,200,0.15)" stroke="rgba(100,130,200,0.3)" stroke-width="1.5"/>
+        <rect x="800" y="200" width="60" height="100" rx="8" fill="rgba(100,130,200,0.15)" stroke="rgba(100,130,200,0.3)" stroke-width="1.5"/>
+        <text x="600" y="330" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(255,255,255,0.25)" text-anchor="middle">6 cilindri · Common Rail · VGT</text>
+      </g>
+
+      <!-- Common Rail pipe -->
+      <line x1="400" y1="380" x2="860" y2="380" stroke="rgba(232,93,0,0.5)" stroke-width="6" stroke-linecap="round"/>
+      <text x="630" y="375" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(232,93,0,0.7)" text-anchor="middle">RAMPĂ COMMON RAIL</text>
+
+      <!-- Component nodes -->
+      <!-- 1 Fuel filter -->
+      <circle cx="264" cy="390" r="26" fill="#0a0f1a" stroke="#e85d00" stroke-width="2.5"/>
+      <text x="264" y="386" font-size="18" text-anchor="middle" dominant-baseline="middle">⛽</text>
+      <text x="264" y="400" font-family="JetBrains Mono,monospace" font-size="10" fill="#e85d00" text-anchor="middle" font-weight="700">1</text>
+      <line x1="290" y1="390" x2="346" y2="390" stroke="#e85d00" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.6"/>
+      <text x="264" y="428" font-family="Manrope,sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">Filtru combustibil</text>
+
+      <!-- 2 Injectors -->
+      <circle cx="600" cy="235" r="26" fill="#0a0f1a" stroke="#e85d00" stroke-width="2.5"/>
+      <text x="600" y="231" font-size="18" text-anchor="middle" dominant-baseline="middle">💉</text>
+      <text x="600" y="245" font-family="JetBrains Mono,monospace" font-size="10" fill="#e85d00" text-anchor="middle" font-weight="700">2</text>
+      <text x="600" y="272" font-family="Manrope,sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">Injectoare</text>
+
+      <!-- 3 Turbo VGT -->
+      <circle cx="936" cy="283" r="26" fill="#0a0f1a" stroke="#e85d00" stroke-width="2.5"/>
+      <text x="936" y="279" font-size="18" text-anchor="middle" dominant-baseline="middle">🌀</text>
+      <text x="936" y="293" font-family="JetBrains Mono,monospace" font-size="10" fill="#e85d00" text-anchor="middle" font-weight="700">3</text>
+      <line x1="860" y1="270" x2="912" y2="276" stroke="#e85d00" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+      <text x="940" y="320" font-family="Manrope,sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">Turbo VGT</text>
+
+      <!-- 4 EGR -->
+      <circle cx="420" cy="518" r="26" fill="#0a0f1a" stroke="#e85d00" stroke-width="2.5"/>
+      <text x="420" y="514" font-size="18" text-anchor="middle" dominant-baseline="middle">♻️</text>
+      <text x="420" y="528" font-family="JetBrains Mono,monospace" font-size="10" fill="#e85d00" text-anchor="middle" font-weight="700">4</text>
+      <line x1="420" y1="492" x2="420" y2="436" stroke="#e85d00" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.6"/>
+      <text x="420" y="556" font-family="Manrope,sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">EGR + Răcitor</text>
+
+      <!-- 5 DPF -->
+      <circle cx="936" cy="518" r="26" fill="#0a0f1a" stroke="#e85d00" stroke-width="2.5"/>
+      <text x="936" y="514" font-size="18" text-anchor="middle" dominant-baseline="middle">🔲</text>
+      <text x="936" y="528" font-family="JetBrains Mono,monospace" font-size="10" fill="#e85d00" text-anchor="middle" font-weight="700">5</text>
+      <line x1="910" y1="518" x2="864" y2="490" stroke="#e85d00" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+      <text x="940" y="556" font-family="Manrope,sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">DPF / FAP</text>
+
+      <!-- 6 Intercooler -->
+      <circle cx="264" cy="220" r="26" fill="#0a0f1a" stroke="#e85d00" stroke-width="2.5"/>
+      <text x="264" y="216" font-size="18" text-anchor="middle" dominant-baseline="middle">❄️</text>
+      <text x="264" y="230" font-family="JetBrains Mono,monospace" font-size="10" fill="#e85d00" text-anchor="middle" font-weight="700">6</text>
+      <line x1="290" y1="232" x2="346" y2="270" stroke="#e85d00" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.6"/>
+      <text x="264" y="258" font-family="Manrope,sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">Intercooler</text>
+
+      <!-- 7 HP Pump -->
+      <circle cx="600" cy="560" r="26" fill="#0a0f1a" stroke="#e85d00" stroke-width="2.5"/>
+      <text x="600" y="556" font-size="18" text-anchor="middle" dominant-baseline="middle">⚙️</text>
+      <text x="600" y="570" font-family="JetBrains Mono,monospace" font-size="10" fill="#e85d00" text-anchor="middle" font-weight="700">7</text>
+      <line x1="600" y1="534" x2="600" y2="488" stroke="#e85d00" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.6"/>
+      <text x="600" y="597" font-family="Manrope,sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">Pompă HP CP3/CP4</text>
+
+      <!-- 8 Glow plugs -->
+      <circle cx="780" cy="155" r="26" fill="#0a0f1a" stroke="#e85d00" stroke-width="2.5"/>
+      <text x="780" y="151" font-size="18" text-anchor="middle" dominant-baseline="middle">🔥</text>
+      <text x="780" y="165" font-family="JetBrains Mono,monospace" font-size="10" fill="#e85d00" text-anchor="middle" font-weight="700">8</text>
+      <line x1="770" y1="181" x2="740" y2="200" stroke="#e85d00" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.6"/>
+      <text x="780" y="126" font-family="Manrope,sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">Bujii incandescente</text>
+
+      <!-- Click hint -->
+      <text x="600" y="645" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(232,93,0,0.5)" text-anchor="middle" letter-spacing="2">CLICK PE COMPONENTĂ PENTRU DETALII</text>
+    </svg>
+  </div>
+</div>
+
+<div class="index" style="margin-top:32px;">
+  <div class="index-title">Componente principale</div>
+  <div class="index-grid" id="indexGrid"></div>
+</div>
+
+<div class="dtc-section">
+  <div class="index-title" style="margin-bottom:16px;">Caută DTC</div>
+  <div class="dtc-bar">
+    <span style="color:var(--text-dim);font-size:18px;">🔍</span>
+    <input type="text" id="dtcSearch" placeholder="ex: P0087, P0401, P2002, P0299..." autocomplete="off"/>
+    <kbd style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 6px;background:rgba(255,255,255,0.06);border:1px solid var(--line-strong);border-radius:4px;color:var(--text-dim);">esc</kbd>
+  </div>
+  <div class="dtc-results" id="dtcResults"></div>
+</div>
+
+<footer>Diesel 3.0 · <span>ghid interactiv</span> · generic · 8 componente · 80+ DTC-uri</footer>
+
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="num" id="mNum">1</div>
+      <div class="titles">
+        <div class="kicker" id="mKicker">Diesel 3.0L</div>
+        <h2 id="modalTitle">Componenta</h2>
+      </div>
+      <button class="close-btn" id="closeBtn" aria-label="Închide">✕</button>
+    </div>
+    <div class="tab-bar" id="tabBar">
+      <button class="tab active" data-tab="present">📋 Prezentare</button>
+      <button class="tab" data-tab="problems">⚠️ Probleme & DTC <span class="tab-badge" id="dtcCount">0</span></button>
+      <button class="tab" data-tab="verify">🔍 Verificare</button>
+      <button class="tab" data-tab="maintenance">🔧 Întreținere & Costuri</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-icon-panel" id="mIconPanel">
+        <div class="big-icon" id="mBigIcon">⛽</div>
+        <div>
+          <div class="comp-name" id="mCompName"></div>
+          <div class="comp-loc" id="mCompLoc"></div>
+        </div>
+      </div>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-btn" id="prevBtn">← Anterior</button>
+      <button class="nav-btn" id="nextBtn">Următor →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const COMPONENTS = [{"id": 1, "name": "Filtru combustibil", "icon": "⛽", "x": 22.0, "y": 58.0, "locatie": "sub caroserie sau în compartimentul motor, pe linia de combustibil", "rol_short": "filtrează impuritățile din motorină", "verifici_short": "pornire grea, putere scăzută, presiune mică", "descriere": "Filtrul de combustibil reține particulele fine de murdărie, rugină și apă din motorină înainte ca aceasta să ajungă la pompa de înaltă presiune și injectoare. Pe sistemele Common Rail, unde presiunile ajung la 2000+ bar, chiar și o particulă de 5 microni poate distruge injectoarele. Este una din cele mai critice componente de întreținere la un motor diesel.", "functionare": "Motorina vine din rezervor prin pompa de alimentare (presiune joasă, 3-7 bar) → filtru (reține particule >5µm și separă apa) → pompa de înaltă presiune (CP3/CP4, 250-2000 bar) → rampa Common Rail → injectoare. Unele filtre au și un separator de apă cu senzor de nivel.", "probleme": [{"sym": "Pornire grea la rece", "cause": "filtru colmatat, rezistență la curgere crescută", "fix": "schimb filtru (intervenție 20-30 min)"}, {"sym": "Pierdere de putere la accelerare", "cause": "debit insuficient spre pompă", "fix": "schimb filtru + verifică pompa de alimentare"}, {"sym": "Motor se oprește sub sarcină", "cause": "filtru complet blocat sau apă în filtru", "fix": "drenează apa, schimbă filtrul"}, {"sym": "P0087 - presiune combustibil prea mică", "cause": "filtru colmatat sau pompă de alimentare slabă", "fix": "începe cu schimbul filtrului"}, {"sym": "Fum negru/albastru excesiv", "cause": "injectoare contaminate din filtru defect", "fix": "schimb filtru + curățare injectoare"}], "dtc": [{"code": "P0087", "desc": "Presiune combustibil în rampă prea mică (sub limita minimă)"}, {"code": "P0088", "desc": "Presiune combustibil în rampă prea mare"}, {"code": "P0090", "desc": "Circuit regulator presiune combustibil - defecțiune"}, {"code": "P0091", "desc": "Circuit regulator presiune - semnal mic"}, {"code": "P0092", "desc": "Circuit regulator presiune - semnal mare"}, {"code": "P0190", "desc": "Circuit senzor presiune rampă combustibil - defecțiune"}, {"code": "P0191", "desc": "Senzor presiune rampă - domeniu/performanță"}, {"code": "P0192", "desc": "Senzor presiune rampă - semnal mic"}, {"code": "P0193", "desc": "Senzor presiune rampă - semnal mare"}], "verificare": ["Verifică intervalul de schimb (de obicei 20.000-30.000 km sau 2 ani).", "La filtrele cu separator de apă: drenează apa periodic (robinet la baza filtrului).", "Test presiune pompă alimentare: 3-7 bar (cu manometru pe retur filtru).", "Dacă ai P0087: verifică mai întâi filtrul înainte de pompă sau injectoare.", "Culoare motorină în filtru: normală = galben-maroniu; neagră = motor cu probleme.", "⚠️ NU rula niciodată filtrul gol sau cu aer - pompele CP4 se distrug fără lubrifiere."], "tools": ["Cheie filtru (specifică modelului, 15-50 RON)", "Manometru presiune combustibil (100-300 RON)", "Recipient pentru scurgere motorină (10-20 RON)"], "intretinere": "Schimb la 20.000-30.000 km sau 2 ani (oricare vine primul). Pe drumuri de țară sau motorină de calitate slabă: 15.000 km. Drenaj apă separator: la fiecare schimb de ulei sau când se aprinde martorul.", "costuri": [{"item": "Filtru combustibil (Mann, Bosch, Mahle)", "price": "80-250 RON"}, {"item": "Filtru original Mercedes/BMW/VW", "price": "150-400 RON"}, {"item": "Manoperă schimb filtru", "price": "80-200 RON"}, {"item": "Test presiune alimentare", "price": "100-200 RON"}], "sfat": "La motoarele cu pompe CP4 (BMW N57 post-2010, Ford 3.0 TDCi, VW post-2012) uleiul din motorina românească sau motorina de calitate slabă distruge pompa în 50.000-100.000 km. Folosește aditiv lubrifiant combustibil (Liqui-Moly, Wynns) sau filtre cu separator de apă de calitate. O pompă CP4 costă 3.000-8.000 RON. Un filtru la timp costă 200 RON."}, {"id": 2, "name": "Injectoare Common Rail", "icon": "💉", "x": 48.0, "y": 38.0, "locatie": "pe chiulasă, câte unul per cilindru (6 buc la V6, 4 buc la L4)", "rol_short": "pulverizează motorina în camera de ardere", "verifici_short": "mers neregulat, fum, consum mare, P0200-P0209", "descriere": "Injectoarele Common Rail sunt supape solenoidale sau piezoelectrice de mare precizie care pulverizează motorina la presiuni de 1600-2500 bar în camere de ardere. La un motor modern, un injector efectuează 5-7 injecții per ciclu (pilot, pre, main, post) cu o precizie de microsecunde. Sunt componentele cele mai scumpe și delicate ale unui motor diesel.", "functionare": "Rampa Common Rail menține o presiune constantă (200-2000 bar în funcție de sarcină). ECU comandă deschiderea supapei injectorului (solenoid sau piezo) pentru perioade de 0.1-2ms. Cantitatea injectată depinde de presiunea din rampă și durata deschiderii. Injectoarele piezo (Bosch, Delphi) sunt mai rapide și precise dar mai scumpe.", "probleme": [{"sym": "Mers neregulat la ralanti (tremur motor)", "cause": "injector cu debit deviat (prea mult sau prea puțin)", "fix": "test debit injectoare (balance rate) + recalibrare sau înlocuire"}, {"sym": "Fum negru la accelerare", "cause": "injector care picură (nu etanșează perfect)", "fix": "test etanșeitate injectoare la rece"}, {"sym": "Fum alb la pornire la rece", "cause": "injector defect - injecție pilot incorectă", "fix": "diagnoză injector per cilindru"}, {"sym": "Consum crescut cu 20-30%", "cause": "injector cu debit prea mare", "fix": "recalibrare IMA/C2I sau înlocuire"}, {"sym": "Miros puternic de motorină în habitaclu", "cause": "etanșare injector defectă (garnitura Oring sau cupru)", "fix": "schimb garnituri injector + test presiune"}, {"sym": "Bătaie metalică (diesel knock) pronunțată", "cause": "injecție pilot incorectă sau injector cu răspuns lent", "fix": "recalibrare sau înlocuire injectoare"}, {"sym": "Lumina Motor + P0201-P0206", "cause": "injector defect pe cilindrul specific", "fix": "izolează cilindrul, test, înlocuiește"}], "dtc": [{"code": "P0200", "desc": "Circuit injector - defecțiune generală"}, {"code": "P0201", "desc": "Circuit injector cilindru 1 - defecțiune"}, {"code": "P0202", "desc": "Circuit injector cilindru 2"}, {"code": "P0203", "desc": "Circuit injector cilindru 3"}, {"code": "P0204", "desc": "Circuit injector cilindru 4"}, {"code": "P0205", "desc": "Circuit injector cilindru 5"}, {"code": "P0206", "desc": "Circuit injector cilindru 6"}, {"code": "P0261-P0272", "desc": "Injector cilindru X - circuit low/high"}, {"code": "P0087", "desc": "Presiune rampă prea mică (poate fi injector cu scurgere internă)"}, {"code": "P2146", "desc": "Grupă 1 injectoare - circuit deschis"}, {"code": "P2149", "desc": "Grupă 2 injectoare - circuit deschis"}, {"code": "P246C", "desc": "Mercedes: cantitate corectivă injector (IMA) - depășită"}], "verificare": ["Citește Balance Rate (contribuție cilindru) cu OBD2 avansat - cilindrul deviat arată ±2mg/cursă față de medie.", "Test la rece (cold start contribution): fiecare cilindru trebuie să contribuie similar.", "Test etanșeitate (leak-back test): debranșezi returul și măsori scurgerea internă - max 20-30ml/min.", "Vizualizare injector demontate: corpul nu trebuie să fie corodat, garniturile intacte.", "Test electric solenoid: rezistență 0.5-1.5Ω (solenoid) sau 50-100kΩ (piezo).", "⚠️ La injectoarele înglibate (BMW N57): verifică momentul de strângere - 25Nm + unghi. Filetul din chiulasă se strică ușor."], "tools": ["OBD2 cu live data injector balance rate (iCarsoft, Autel, VCDS) - 500-2500 RON", "Set extractor injectoare (BMW/Mercedes specific) - 500-2000 RON", "Trusă garnituri injectoare (30-100 RON/set)", "Multimetru pentru test solenoid (60-200 RON)"], "intretinere": "Injectoarele nu au un interval fix de înlocuire - durează 200.000-400.000 km dacă motorul e îngrijit. Preventiv: aditiv combustibil cleaner la fiecare 20.000 km. Recalibrare IMA/C2I la fiecare schimb de injector. NU rula cu rezervor aproape gol - injectoarele se lubrifică cu motorina.", "costuri": [{"item": "Injector reconditionat (Bosch Exchange)", "price": "500-1.200 RON/buc"}, {"item": "Injector nou original (Bosch, Delphi, Denso)", "price": "1.500-4.000 RON/buc"}, {"item": "Set 6 injectoare recondiționate", "price": "3.000-7.000 RON"}, {"item": "Curățare ultrasonică + recalibrare injector", "price": "200-600 RON/buc"}, {"item": "Manoperă schimb injector", "price": "200-600 RON/buc"}, {"item": "Recalibrare IMA/C2I după înlocuire", "price": "100-300 RON"}], "sfat": "NICIODATĂ nu cumpăra injectoare recondiționate de la necunoscuți fără garanție și fișă de test. Un injector prost montat poate distruge chiulasa (garnitură arsă, carbon excess) sau chiar pistonul. La V6 diesel Mercedes OM642, verifică și returnul de motorină (o-ring-urile) - scurgerile de motorină pe galeria de admisie sunt un semn clasic de o-ring uzat. Costul o-ring-urilor: 50-150 RON. Ignorat: incendiu motor."}, {"id": 3, "name": "Turbocompresor VGT", "icon": "🌀", "x": 62.0, "y": 42.0, "locatie": "lateral pe bloc/chiulasă, pe galeria de evacuare", "rol_short": "comprimă aerul admis pentru mai multă putere", "verifici_short": "putere scăzută, fum albastru, zgomot turbo, P0299", "descriere": "Turbocompresorul cu geometrie variabilă (VGT/VNT) folosește energia gazelor de evacuare pentru a comprima aerul admis. Paletele mobile (vane) ale turbinei se ajustează continuu pentru a optimiza presiunea de supraalimentare la toate turațiile. La motoarele 3.0L diesel, presiunea de supraalimentare ajunge la 2.5-3.5 bar.", "functionare": "Gazele de evacuare (700-900°C) antrenează roata turbinei → arborele comprimă aerul în roata compresorului → aerul comprimat trece prin intercooler → galeria de admisie. Paletele VGT sunt comandate electro-pneumatic sau electric de ECU pentru a regla presiunea. La turații mici, paletele se strâng (flux mare, presiune rapidă). La turații mari, se deschid (debit maxim).", "probleme": [{"sym": "Limp mode sub 2500 rpm (P0299)", "cause": "pale VGT blocate cu carbon, actuator defect", "fix": "curățare pale VGT (fără demontare dacă sunt mobile) sau înlocuire turbo"}, {"sym": "Fum albastru persistent", "cause": "simering arbore turbo uzat - ulei în admisie", "fix": "înlocuire turbo obligatorie"}, {"sym": "Zgomot șuierat sau metalic de la turbo", "cause": "rulmenți uzați sau pale lovite de un corp străin", "fix": "inspectie turbo + înlocuire dacă joc axial > 0.1mm"}, {"sym": "Putere bună jos dar scădere sus", "cause": "supapa wastegate blocată deschis sau actuator VGT", "fix": "test actuator electric/pneumatic"}, {"sym": "Consum mare de ulei (>0.5L/1000km)", "cause": "simering turbo uzat sau PCV defect", "fix": "test fum admisie + test turbo"}, {"sym": "Intercooler cu ulei în interior", "cause": "turbo scurge ulei pe admisie", "fix": "curățare intercooler + înlocuire turbo"}], "dtc": [{"code": "P0045", "desc": "Actuator VGT/bypass turbo - circuit"}, {"code": "P0046", "desc": "Actuator VGT - domeniu/performanță"}, {"code": "P0047", "desc": "Actuator VGT - semnal mic"}, {"code": "P0048", "desc": "Actuator VGT - semnal mare"}, {"code": "P0234", "desc": "Suprapresiune turbo (overboost) - limită depășită"}, {"code": "P0299", "desc": "Subpresiune turbo (underboost) - cea mai comună la VGT colmatat"}, {"code": "P2563", "desc": "Senzor poziție pale turbo - domeniu"}, {"code": "P2564", "desc": "Senzor poziție pale turbo - semnal mic"}, {"code": "P00AF", "desc": "Mercedes: Boost pressure regulator - performanță"}, {"code": "P0638", "desc": "Circuit actuator clapetă admisie (legat de turbo)"}], "verificare": ["Citește presiunea de boost în Live Data (MAP sensor): la 3000 rpm sub sarcină trebuie 1.5-2.5 bar relativ.", "Verifică jocul axial al arborelui turbo (cu mâna): NU trebuie să existe joc axial > 0.1mm.", "Verifică paletele VGT vizual (prin galeria de evacuare): nu trebuie să fie blocate cu carbon.", "Test actuator electric VGT: rezistență 8-15Ω, mișcare liberă la comandă.", "Inspectează furtunele de admisie/intercooler: nu trebuie să fie crăpate.", "Verifică uleiul de motor: dacă e negru și uleios pe capacul de admisie = turbo scurge.", "⚠️ Lasă motorul să se răcească 5 min la ralanti înainte să oprești după drum lung - uleiul continuă să circule și răcește turbo."], "tools": ["OBD2 cu Live Data (MAP boost pressure) - 300-2500 RON", "Manometru supraalimentare cu T pe furtun intercooler - 100-300 RON", "Endoscop/camera flexibilă pentru inspectie pale - 100-400 RON", "Indicator comparator pentru joc axial - 200-500 RON"], "intretinere": "Turbocompresorul nu are un interval specific de service, dar: schimbă uleiul la termen (carbon în ulei vechi = depuneri pe lagărele turbo). Folosește ulei de specificație corectă (LL, Longlife). La schimb de turbo: OBLIGATORIU curăță și schimbă furtunele de ulei. Lasă 2-3 minute la ralanti după pornire la rece înainte de sarcină.", "costuri": [{"item": "Turbo reconditionat (schimb), garantat", "price": "1.500-4.000 RON"}, {"item": "Turbo nou original (Garrett, BorgWarner)", "price": "4.000-12.000 RON"}, {"item": "Curățare pale VGT (fără demontare, on-car)", "price": "200-600 RON"}, {"item": "Kit reparație actuator VGT", "price": "300-800 RON"}, {"item": "Manopera schimb turbo (complex)", "price": "800-2.500 RON"}, {"item": "Furtune silicon intercooler (upgrade)", "price": "400-1.200 RON"}], "sfat": "Cel mai frecvent defect la VGT: paletele blocate cu carbon din cauza EGR-ului. Soluție preventivă: aditiv curățare motor la fiecare 30.000 km + curățare DPF activ. La motoarele BMW N57 și Mercedes OM642, actuatorul electric VGT (HELLA/Pierburg) cedează frecvent. Costul actuatorului: 400-1.200 RON față de un turbo complet. Verifică actuatorul înainte să comanzi turbo nou."}, {"id": 4, "name": "EGR + Răcitor EGR", "icon": "♻️", "x": 35.0, "y": 52.0, "locatie": "lateral pe chiulasă/bloc, între galeria de evacuare și admisie", "rol_short": "recirculă gazele de evacuare pentru reducerea NOx", "verifici_short": "putere scăzută, fum negru, mers neregulat, P0400", "descriere": "Sistemul EGR (Exhaust Gas Recirculation) redirecționează o parte din gazele de evacuare înapoi în admisie. Gazele inerte reduc temperatura de ardere → scad emisiile de NOx. Răcitorul EGR (EGR cooler) răcește gazele recirculate de la ~500°C la ~150°C înainte de admisie. Pe motoarele Euro 5-6, EGR-ul poate recircula 40-60% din gaze la sarcini mici.", "functionare": "ECU calculează cantitatea de gaze de recirculat în funcție de sarcină, temperatură și senzori. Supapa EGR (electrică sau pneumatică) se deschide → gazele trec prin răcitorul EGR → se amestecă cu aerul proaspăt în admisie. La sarcini mari (accelerare), EGR se închide complet pentru putere maximă.", "probleme": [{"sym": "Depuneri de carbon masive în admisie", "cause": "EGR deschis permanent (defect) sau uzură normală Euro 5-6", "fix": "curățare galerie admisie + supapă EGR"}, {"sym": "Pierdere de răcire (coolant loss) fără pierderi vizibile", "cause": "răcitor EGR fisurat - antigelul intră în admisie", "fix": "înlocuire răcitor EGR (URGENT - poate hidroloca motorul)"}, {"sym": "Fum alb la rece care persistă", "cause": "răcitor EGR fisurat - antigel ars în motor", "fix": "test etanșeitate răcitor EGR"}, {"sym": "Mers neregulat + ralanti instabil", "cause": "supapă EGR blocată deschisă sau parțial deschisă", "fix": "curățare sau înlocuire supapă EGR"}, {"sym": "P0401 - debit EGR insuficient", "cause": "EGR blocat cu carbon", "fix": "curățare sau înlocuire EGR"}, {"sym": "Ralanti ok dar accelerare slabă", "cause": "carbon masiv în galeria de admisie (tumble flaps blocate)", "fix": "curățare manuală sau chimică galerie admisie"}], "dtc": [{"code": "P0400", "desc": "Debit EGR - defecțiune generală"}, {"code": "P0401", "desc": "Debit EGR insuficient (EGR blocat sau senzor MAF)"}, {"code": "P0402", "desc": "Debit EGR excesiv (supapă blocată deschisă)"}, {"code": "P0403", "desc": "Circuit supapă EGR - defecțiune"}, {"code": "P0404", "desc": "Supapă EGR - domeniu/performanță"}, {"code": "P0405", "desc": "Senzor poziție supapă EGR - semnal mic"}, {"code": "P0406", "desc": "Senzor poziție supapă EGR - semnal mare"}, {"code": "P0407", "desc": "Senzor EGR B - circuit low"}, {"code": "P0408", "desc": "Senzor EGR B - circuit high"}, {"code": "P0409", "desc": "Senzor EGR A - circuit"}, {"code": "P1404", "desc": "Mercedes/BMW: EGR closed position performance"}], "verificare": ["Vizual: scoate tubulatura de admisie și verifică depunerile de carbon - negru și uleios = EGR activ mult.", "Test supapă EGR: cu motorul rece, mișcă manual supapa - trebuie să se miște liber, NU blocată cu carbon.", "Live Data: urmărește EGR_Position_Requested vs EGR_Position_Actual - diferența mare = supapă blocată.", "Test răcitor EGR: presupresurează sistemul de răcire (test presiune) - dacă scade presiune = răcitor fisurat.", "Verifică conducta de retur a condensului EGR: trebuie să fie curată, nu astupată.", "⚠️ Semnul URGENT al răcitorului fisurat: vas expansiune cu nivel care scade fără pierderi vizibile + fum alb la eșapament."], "tools": ["OBD2 cu Live Data EGR position (iCarsoft, VCDS) - 500-2500 RON", "Pompă test presiune sistem răcire - 200-500 RON", "Spray curățare EGR (Liqui-Moly, Wurth) - 50-100 RON", "Set chei pentru demontare EGR (T30, T40 Torx, 10/13mm)"], "intretinere": "EGR nu are interval fix de service. Preventiv: curățare chimică EGR la fiecare 60.000-80.000 km. Dacă faci multe curse scurte (sub 10 km) = carbon mai rapid → curățare mai des. La mașinile cu mulți km pe drum scurt, ia în calcul dezactivarea EGR (cu remap ECU + placă blanking - discutabil legal).", "costuri": [{"item": "Supapă EGR nouă (Pierburg, Wahler)", "price": "500-1.800 RON"}, {"item": "Supapă EGR original Mercedes/BMW", "price": "1.200-3.500 RON"}, {"item": "Răcitor EGR nou", "price": "800-2.500 RON"}, {"item": "Curățare EGR + admisie la service", "price": "300-800 RON"}, {"item": "Manoperă înlocuire EGR complet", "price": "400-1.200 RON"}, {"item": "Kit dezactivare EGR (blanking plate)", "price": "50-200 RON"}], "sfat": "Răcitorul EGR fisurat este o urgență — antigelul injectat în motor provoacă hidroblocare (pistonul lovește lichidul incompresibil → bielă îndoită → motor distrus). Semnele: consum antigel fără pierderi vizibile, fum alb cu miros dulce, emulsie în ulei. Verifică IMEDIAT dacă ai aceste simptome. Costul ignorării: motor nou = 15.000-40.000 RON."}, {"id": 5, "name": "Filtru Particule DPF/FAP", "icon": "🔲", "x": 75.0, "y": 62.0, "locatie": "pe sistemul de evacuare, după catalizatorul DOC", "rol_short": "reține particulele de fum diesel (PM2.5)", "verifici_short": "presiune în diferențial, regenerare eșuată, P2002", "descriere": "Filtrul de particule diesel (DPF/FAP) reține 95%+ din particulele fine de fum (soot/PM2.5) din gazele de evacuare. Este un monolit ceramic poros cu canale alternativ astupate care forțează gazele prin pereți filtrați. Se 'curăță' singur prin regenerare activă sau pasivă. Obligatoriu pe motoarele Euro 5 și 6.", "functionare": "Particulele de carbon se depun în DPF → la ~45g soot acumulat, ECU inițiază regenerarea. Regenerare pasivă: la temperaturi >600°C (autostradă) carbonul arde singur. Regenerare activă: ECU injectează combustibil post-injecție → crește temperatura la 600-650°C → carbonul arde. Ciclu: ~15-30 min la 60+ km/h. Regenerarea activă eșuează la curse prea scurte.", "probleme": [{"sym": "Martor DPF portocaliu (pictogramă filtru)", "cause": "DPF plin, regenerare necesară", "fix": "conduce 30+ min la viteze >60 km/h (autostradă sau drum național)"}, {"sym": "Martor DPF + putere redusă (limp mode)", "cause": "DPF supraîncărcat >70g soot, regenerare imposibilă", "fix": "regenerare forțată la service (OBD2)"}, {"sym": "Martor DPF permanent + fum negru", "cause": "DPF astupat complet sau fisurat", "fix": "curățare profesională DPF sau înlocuire"}, {"sym": "Nivel ulei crescut anormal", "cause": "regenerare activă eșuată - motorina s-a scurs în baia de ulei", "fix": "schimb ulei imediat + diagnoza ciclului de regenerare"}, {"sym": "Consum crescut cu 15-20%", "cause": "DPF parțial blocat, contra-presiune crescută", "fix": "verifică presiunea diferențială, curățare sau înlocuire"}, {"sym": "P2002 + putere normală", "cause": "senzor presiune diferențială DPF defect sau tub astupat", "fix": "verifică tuburile senzorului înainte de înlocuire DPF"}], "dtc": [{"code": "P2002", "desc": "Eficiență filtru particule sub prag - banc 1"}, {"code": "P2003", "desc": "Eficiență filtru particule sub prag - banc 2 (V6)"}, {"code": "P2452", "desc": "Senzor presiune diferențială DPF - performanță"}, {"code": "P2453", "desc": "Senzor presiune diferențială DPF - semnal mic"}, {"code": "P2454", "desc": "Senzor presiune diferențială DPF - semnal mare"}, {"code": "P2458", "desc": "Regenerare DPF - durată"}, {"code": "P2459", "desc": "Regenerare DPF - frecvență"}, {"code": "P246C", "desc": "Mercedes: DPF blocat/astupat"}, {"code": "P246D", "desc": "Mercedes: presiune diferențială DPF excesivă"}, {"code": "P24B6", "desc": "Mercedes: DPF - eficiență sever compromisă"}, {"code": "P11DD", "desc": "BMW: DPF - saturație soot"}], "verificare": ["Live Data: verifică 'Soot Load' sau 'DPF Fill Level' - sub 45% = OK; 45-80% = regenerare necesară; >80% = regenerare forțată.", "Presiune diferențială DPF: la 2000 rpm, max 50-80 mbar (curat); >200 mbar = blocat.", "Verifică tuburile senzorului presiune diferențiale: nu trebuie să fie crăpate sau astupate cu carbon.", "Verifică nivelul uleiului: dacă e PESTE MAX, ai motorină în ulei din regenerări eșuate → schimb ulei URGENT.", "Numărul de regenerări eșuate: citit cu OBD2 avansat - prea multe = mașina nu face destule curse lungi.", "⚠️ Nu adăuga aditiv DPF (Eolys) altfel decât cel specificat de producător - unele sisteme au rezervor dedicat."], "tools": ["OBD2 cu parametri DPF (soot load, regen count) - iCarsoft, Autel - 500-2500 RON", "Aparat regenerare forțată DPF (numai la service)", "Manometru presiune diferențială DPF - 100-300 RON"], "intretinere": "DPF nu are un interval de înlocuire fix - durează 150.000-300.000 km dacă este utilizat corect (curse mixte, nu doar urban). Curățare profesională la 100.000-150.000 km sau la prima P2002. Evită exclusiv cursele scurte sub 10 km. Folosește ulei Low-SAPS (Low Ash) specificat - cenușa din ulei nu arde și umple DPF-ul ireversibil.", "costuri": [{"item": "Curățare DPF profesională (off-car, cuptor)", "price": "600-1.500 RON"}, {"item": "Curățare DPF on-car (injecție chimică)", "price": "300-800 RON"}, {"item": "DPF nou original Mercedes/BMW", "price": "4.000-15.000 RON"}, {"item": "DPF aftermarket (HJS, Dinex, Katfix)", "price": "1.500-5.000 RON"}, {"item": "Senzor presiune diferențială DPF", "price": "200-600 RON"}, {"item": "Regenerare forțată la service", "price": "100-300 RON"}], "sfat": "Regula de aur pentru DPF: fă minim 1-2 curse de autostradă de 30+ minute pe săptămână dacă folosești mașina în principal urban. Dacă faci exclusiv oraș, DPF-ul se umple în 20.000-40.000 km și necesită curățare costisitoare. NU curăța DPF-ul cu apă sub presiune - distrugi monolitul ceramic. NU scoate/bypassa DPF-ul dacă treci prin ITP - amendă 3.000 RON + radiere."}, {"id": 6, "name": "Intercooler", "icon": "❄️", "x": 25.0, "y": 38.0, "locatie": "în față la radiator sau lateral în aripi (depinde de model)", "rol_short": "răcește aerul comprimat de turbo", "verifici_short": "putere scăzută la cald, ulei în admisie, fum", "descriere": "Intercooler-ul (TIAC - Turbo Inter-Air Cooler) răcește aerul comprimat de turbocompresor înainte de intrarea în motor. Aerul comprimat se încălzește la 150-200°C în turbo → intercooler-ul îl răcește la 40-60°C → aerul rece este mai dens → mai multă masă de aer per ciclu → mai multă putere și eficiență. Poate fi răcit cu aer (FMIC/SMIC) sau cu apă (CHIC).", "functionare": "Aerul cald de la turbo intră în intercooler prin furtunul de presiune → circulă prin lamele metalice (aluminiu) → aerul exterior sau apa de răcire extrag căldura → aerul răcit iese spre clapeta de accelerație/galeria de admisie. Pe intercoolere cu apă (BMW N57, Mercedes), pompa electrică de apă circulă un circuit secundar de răcire.", "probleme": [{"sym": "Putere bună dimineața, pierdere la căldură", "cause": "intercooler ineficient sau tuburi crăpate (pierdere presiune)", "fix": "test etanșeitate admisie la presiune"}, {"sym": "Ulei vizibil în furtunele de admisie", "cause": "turbo cu simering uzat + intercooler contaminat", "fix": "înlocuire turbo + curățare intercooler"}, {"sym": "Accelerare întârziată cu sunet de 'puf'", "cause": "furtun intercooler crăpat - pierdere presiune instantanee", "fix": "inspecție vizuală furtune + test fumarol"}, {"sym": "P0299 + furtune ok + turbo ok", "cause": "intercooler cu scurgere internă sau furtun subțire crăpat", "fix": "test presiune admisie (smoke test)"}, {"sym": "Lamele intercooler murdare/colmatate", "cause": "insecte, frunze, murdărie", "fix": "curățare cu jet de apă sau aer din față"}], "dtc": [{"code": "P0299", "desc": "Presiune supraalimentare insuficientă (poate fi furtun intercooler crăpat)"}, {"code": "P0234", "desc": "Suprapresiune turbo (poate fi furtun blocat sau intercooler astupat)"}, {"code": "P0110", "desc": "Senzor temperatură aer admisie (IAT) - circuit"}, {"code": "P0112", "desc": "Senzor IAT - semnal mic (scurt la masă)"}, {"code": "P0113", "desc": "Senzor IAT - semnal mare (circuit deschis)"}, {"code": "P0116", "desc": "Senzor temperatură intercooler cu apă (CHIC) - performanță"}, {"code": "P2279", "desc": "Scurgere sistem admisie aer (direct legat de furtune intercooler)"}], "verificare": ["Inspecție vizuală furtune: caută crăpături, mai ales la colțuri și cleme.", "Test smoke (fumarol): injectezi fum în admisie cu motorul oprit, verifici unde iese.", "Test presiune: presupresurezi admisia la 0.5-1 bar cu o pompă de mână, verifici dacă menține.", "Verifică lamele intercooler: nu trebuie să fie turtite sau colmatate cu insecte.", "La intercooler cu apă: verifică pompa electrică de apă - trebuie să funcționeze la pornire.", "Temperatura aer după intercooler (IAT2) în Live Data: la mers normal, max 60°C."], "tools": ["Kit smoke test/fumarol pentru admisie - 300-1.200 RON", "Pompă test presiune cu manometru - 100-300 RON", "Endoscop pentru inspecție furtune interne - 100-400 RON"], "intretinere": "Intercooler-ul nu are interval specific de service. Curățare lamele: anual sau la fiecare schimb de turbo. La schimb de turbo: obligatoriu curăță interior intercooler de ulei (spălare cu motorină sau solvent specific). Schimbă furtunele de silicon la 150.000+ km preventiv.", "costuri": [{"item": "Set furtune silicon intercooler (upgrade)", "price": "400-1.200 RON"}, {"item": "Intercooler aftermarket (FMIC upgrade)", "price": "800-3.000 RON"}, {"item": "Intercooler original", "price": "1.500-6.000 RON"}, {"item": "Pompa apă intercooler electric (CHIC)", "price": "300-800 RON"}, {"item": "Curățare intercooler la service", "price": "200-500 RON"}], "sfat": "Cel mai simplu test DIY pentru furtune: cu motorul cald la ralanti, palpează fiecare furtun de admisie cu presiune sub palma - nu trebuie să simți scurgeri de aer. Un hiss (șuierat) la accelerare bruscă = furtun crăpat. Înlocuiește cu furtune de silicon (nu cauciuc original) - rezistă mai bine la temperaturi. Buget 400-1.200 RON pentru un set complet silicon."}, {"id": 7, "name": "Pompă înaltă presiune (CP3/CP4)", "icon": "⚙️", "x": 50.0, "y": 58.0, "locatie": "pe bloc, antrenată de distribuție sau curea auxiliară", "rol_short": "generează presiunea înaltă în rampa Common Rail", "verifici_short": "pornire grea, P0087, zgomot metalic, presiune mică", "descriere": "Pompa de înaltă presiune (High Pressure Fuel Pump) este inima sistemului Common Rail. Pompele CP3 (Bosch, piston radial, mai robuste) și CP4 (Bosch, piston axial, mai compacte dar mai sensibile) comprimă motorina de la 5-7 bar la 250-2000 bar pentru rampa Common Rail. CP4 este notorie pentru sensibilitatea la calitatea slabă a combustibilului.", "functionare": "Motorina de joasă presiune (3-7 bar) intră în pompă → pistoane (3 la CP3, 2 la CP4) comprimă motorina → supapele de refulare direcționează motorina la presiune înaltă spre rampă → ECU reglează presiunea prin valva de control debit (MPROP/KVEG). Surplusul de motorină se întoarce la rezervor prin returnul de joasă presiune.", "probleme": [{"sym": "Pornire grea sau nu pornește (P0087)", "cause": "pompă uzată, nu mai atinge presiunea necesară", "fix": "test presiune rampă + test pompă izolat"}, {"sym": "Zgomot metalic (knock) ritmic din zona pompei", "cause": "CP4 în avarie - particule metalice în circuit", "fix": "OPRIRE IMEDIATĂ - curățare circuit complet obligatorie"}, {"sym": "Fluctuații de presiune în rampă la Live Data", "cause": "MPROP/KVEG defect sau pompă cu randament scăzut", "fix": "test MPROP + înlocuire pompă dacă presiunea nu ține"}, {"sym": "Injectoare distruse simultan", "cause": "CP4 a trimis particule metalice în circuit", "fix": "schimb pompă + toate injectoarele + flush circuit"}, {"sym": "Motor se oprește la cald", "cause": "pompă cu expansiune termică excesivă", "fix": "test pompă la temperatură de funcționare"}], "dtc": [{"code": "P0087", "desc": "Presiune combustibil rampă prea mică - cel mai comun la pompă uzată"}, {"code": "P0088", "desc": "Presiune combustibil rampă prea mare (MPROP blocat)"}, {"code": "P0090", "desc": "Circuit regulator presiune combustibil (MPROP/KVEG)"}, {"code": "P0091", "desc": "Regulator presiune - curent prea mic"}, {"code": "P0092", "desc": "Regulator presiune - curent prea mare"}, {"code": "P0193", "desc": "Senzor presiune rampă - semnal mare (poate fi pompă)"}, {"code": "P228C", "desc": "Regulator debit pompă - performanță (specific CP4)"}, {"code": "P228D", "desc": "Presiune dorită vs reală - abatere mare"}], "verificare": ["Live Data: urmărește Rail Pressure actual vs Rail Pressure desired - diferența >100 bar = pompă slabă.", "La pornire la rece: presiunea trebuie să urce rapid la 300+ bar în 1-2 secunde.", "Test de izolare: deconectează MPROP și măsoară rezistența (1-5Ω standard).", "Verifică returul de motorină: debit mic = pompă blochează returul.", "La CP4: cel mai important - ascultă atent zgomote metalice noi + verifică scăzut de presiune bruscă.", "⚠️ La CP4 defectă: NU continua să rulezi - particulele metalice vor distruge TOATE injectoarele (cost total 8.000-20.000 RON)."], "tools": ["OBD2 cu Live Data Rail Pressure (absolut necesar) - 300-2500 RON", "Manometru presiune rampă cu T special (200-1000 RON)", "Multimetru pentru test MPROP (60-200 RON)"], "intretinere": "Pompa nu are un interval specific de service, dar: calitatea motorinei este esențială. CP4 se uzează prematur cu motorină de calitate slabă (viscozitate redusă la temperaturi mari). Adaugă lubrifiant combustibil dacă folosești stații necunoscute. La 200.000+ km, verifică presiunea maxim de rampă - scăderea indică uzura.", "costuri": [{"item": "Pompă CP3 reconditionată (schimb)", "price": "1.500-3.500 RON"}, {"item": "Pompă CP4 reconditionată (schimb)", "price": "2.000-5.000 RON"}, {"item": "Pompă nouă originală (Bosch, Delphi)", "price": "4.000-12.000 RON"}, {"item": "MPROP/KVEG (regulator presiune)", "price": "200-600 RON"}, {"item": "Flush circuit + înlocuire injectoare (după CP4 defectă)", "price": "8.000-25.000 RON"}, {"item": "Manoperă schimb pompă", "price": "600-1.800 RON"}], "sfat": "Pompa CP4 este punctul slab al motoarelor Euro 5-6 de 3.0L (BMW N57 post-2010, Ford 3.0 TDCi, VAG 3.0 TDI post-2012). Soluție preventivă: aditiv lubrifiant combustibil (Liqui-Moly MoS2, Stanadyne) la fiecare plin sau la fiecare 10.000 km. 100ml/plin costă ~5 RON și poate economisi 15.000 RON (costul înlocuirii complete după avarie CP4)."}, {"id": 8, "name": "Bujii incandescente + Sistem pornire", "icon": "🔥", "x": 42.0, "y": 26.0, "locatie": "pe chiulasă, câte una per cilindru (6 buc la V6)", "rol_short": "preîncălzesc camera de ardere la pornire la rece", "verifici_short": "pornire grea la rece, P0380, fum alb la rece", "descriere": "Bujiile incandescente (glow plugs) sunt rezistențe electrice montate în camerele de ardere care se încălzesc la 800-1100°C în 2-4 secunde pentru a facilita pornirea la rece. La motoarele diesel moderne, sistemul de preîncălzire are și un control post-pornire (bujiile rămân activate 2-3 minute după pornire pentru emisii). Modulul de control (GSC - Glow Spark Control) comandă individual fiecare bujie.", "functionare": "La cheie în poziția Contact: ECU comandă modulul GSC → bujiile se preîncălzesc 2-10 secunde (depinde de temperatură) → martorul preîncălzire se stinge → pornești. La sub -10°C, ciclul poate dura 15-20 secunde. Post-pornire: bujiile rămân active la putere redusă 1-3 minute. Curentul per bujie: 15-25A la tensiune de 12V.", "probleme": [{"sym": "Pornire grea la rece (-5°C și sub)", "cause": "una sau mai multe bujii defecte", "fix": "test individual per bujie cu multimetru"}, {"sym": "Fum alb excesiv la rece care persistă 5+ min", "cause": "bujii defecte → ardere incompletă → HC nearse", "fix": "schimb bujii + verifică compresie cilindri"}, {"sym": "P0380-P0386 - circuit bujie cilindru X", "cause": "bujie arsă (circuit deschis) sau scurt la masă", "fix": "schimb individual per cilindru"}, {"sym": "Bujie blocată în chiulasă", "cause": "montaj fără pastă antiseizantă, coroziune", "fix": "extracție specială - NU forța (risc rupere bujie)"}, {"sym": "Pornire ok dar modul nu confirmă", "cause": "modul GSC defect sau senzor temperatură", "fix": "diagnoza modul GSC"}], "dtc": [{"code": "P0380", "desc": "Circuit bujie preîncălzire A - defecțiune"}, {"code": "P0381", "desc": "Martor preîncălzire - circuit"}, {"code": "P0382", "desc": "Circuit bujie preîncălzire B - defecțiune"}, {"code": "P0670", "desc": "Circuit modul control bujii preîncălzire"}, {"code": "P0671", "desc": "Circuit bujie cilindru 1 preîncălzire"}, {"code": "P0672", "desc": "Circuit bujie cilindru 2 preîncălzire"}, {"code": "P0673", "desc": "Circuit bujie cilindru 3 preîncălzire"}, {"code": "P0674", "desc": "Circuit bujie cilindru 4 preîncălzire"}, {"code": "P0675", "desc": "Circuit bujie cilindru 5 preîncălzire"}, {"code": "P0676", "desc": "Circuit bujie cilindru 6 preîncălzire"}, {"code": "P0677", "desc": "Circuit bujie cilindru 7 preîncălzire"}, {"code": "P0678", "desc": "Circuit bujie cilindru 8 preîncălzire"}], "verificare": ["Test rezistență bujie cu multimetru: rezistență 0.5-2Ω = funcțională; ∞ (circuit deschis) = arsă; 0 (scurt) = arsă.", "Test curent: fiecare bujie trage 15-25A la 12V timp de 2-4 sec - deviatia mare indică defect.", "Verifică modulul GSC: cu OBD2 avansat, citește statusul individual per bujie.", "Verifică cablajul: terminale de pe bujii nu trebuie să fie oxidate.", "La schimb: folosește OBLIGATORIU pastă antiseizantă pe filet. Moment de strângere: 8-15 Nm (exact - nu forța).", "⚠️ La motoarele cu mulți km, umeziți cu WD-40 bujiile cu 1-2 zile înainte de demontare - reducere risc rupere."], "tools": ["Multimetru cu modul rezistență (60-200 RON)", "Cheie bujii incandescente (specific model, 8mm/10mm hex) - 50-200 RON", "Extractor bujii rupte (sperăm să nu fie nevoie!) - 200-500 RON", "Pastă antiseizantă cupru (30-60 RON)"], "intretinere": "Schimb preventiv la 80.000-100.000 km. La motoarele Mercedes OM642 și BMW N57: schimbă TOATE 6 bujiile simultan (dacă una cedează, celelalte sunt aproape la fel de uzate). Costul schimbului complet set 6 bujii NGK/Bosch: 400-900 RON + manoperă 200-400 RON.", "costuri": [{"item": "Set 6 bujii incandescente (NGK, Bosch)", "price": "300-700 RON"}, {"item": "Set bujii original Mercedes/BMW", "price": "600-1.500 RON"}, {"item": "Modul control bujii (GSC)", "price": "400-1.200 RON"}, {"item": "Manoperă schimb set complet", "price": "200-500 RON"}, {"item": "Extracție bujie ruptă (serviciu specialist)", "price": "300-1.500 RON"}], "sfat": "La temperaturi sub -15°C, dacă mașina nu pornește imediat la prima tentativă, mai încearcă odată după 30 de secunde (nu scurta continuu demarorul - se supraîncălzește). Dacă ai mai mult de o bujie defectă, motorul poate să nu pornească deloc pe ger. Sfat practic: menține bateria în stare bună iarna - o baterie slabă nu poate furniza cei 150-200A necesari pornirii diesel la rece."}];
+const modal=document.getElementById('modal');
+const closeBtn=document.getElementById('closeBtn');
+const prevBtn=document.getElementById('prevBtn');
+const nextBtn=document.getElementById('nextBtn');
+const tabBar=document.getElementById('tabBar');
+const modalContent=document.getElementById('modalContent');
+const dtcSearch=document.getElementById('dtcSearch');
+const dtcResults=document.getElementById('dtcResults');
+let currentIdx=0,currentTab='present';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+document.getElementById('indexGrid').innerHTML=COMPONENTS.map((c,i)=>`
+  <button class="idx-card" onclick="openModal(${i})">
+    <div class="num">${c.id}</div>
+    <div class="info">
+      <div class="name">${esc(c.icon)} ${esc(c.name)}</div>
+      <div class="meta">${esc(c.rol_short)}</div>
+    </div>
+  </button>`).join('');
+
+function renderTab(tab){
+  const c=COMPONENTS[currentIdx];
+  let html='';
+  if(tab==='present'){
+    html=`<div class="tab-panel active">
+      <div class="info-row"><div class="icon">📍</div><div><div class="label">Locație</div><div class="value">${esc(c.locatie)}</div></div></div>
+      <div class="info-row"><div class="icon">${c.icon}</div><div><div class="label">Descriere</div><div class="value">${esc(c.descriere)}</div></div></div>
+      <div class="info-row"><div class="icon">⚙️</div><div><div class="label">Cum funcționează</div><div class="value">${esc(c.functionare)}</div></div></div>
+    </div>`;
+  } else if(tab==='problems'){
+    const probs=c.probleme.map(p=>`<div class="problem-item"><div class="sym">⚠️ ${esc(p.sym)}</div><div class="meta"><strong>Cauză:</strong> ${esc(p.cause)}</div><div class="fix">✓ ${esc(p.fix)}</div></div>`).join('');
+    const dtcs=c.dtc.map(d=>`<div class="dtc-item"><div class="code">${esc(d.code)}</div><div class="desc">${esc(d.desc)}</div></div>`).join('');
+    html=`<div class="tab-panel active">
+      <div class="section-title">Probleme frecvente</div>
+      <div class="problem-list">${probs}</div>
+      <div class="section-title">DTC-uri (Diagnostic Trouble Codes)</div>
+      <div class="dtc-list">${dtcs}</div>
+    </div>`;
+  } else if(tab==='verify'){
+    const steps=c.verificare.map(s=>{
+      if(s.startsWith('⚠️')||/^[A-ZĂÎȘȚÂ\s]+:$/.test(s.trim()))
+        return `<div class="step no-number" style="font-weight:700;background:rgba(255,184,77,0.06);border-color:rgba(255,184,77,0.2);">${esc(s)}</div>`;
+      if(s.startsWith('  '))
+        return `<div class="step no-number" style="margin-left:20px;font-size:13px;background:transparent;border-color:transparent;padding-top:2px;padding-bottom:2px;">${esc(s.trim())}</div>`;
+      return `<div class="step">${esc(s)}</div>`;
+    }).join('');
+    const tools=c.tools.map(t=>`<div class="tool-item">${esc(t)}</div>`).join('');
+    html=`<div class="tab-panel active">
+      <div class="section-title">Pași de verificare</div>
+      <div class="steps-list">${steps}</div>
+      <div class="section-title">Unelte necesare</div>
+      <div class="tool-list">${tools}</div>
+    </div>`;
+  } else if(tab==='maintenance'){
+    const costs=c.costuri.map(co=>`<div class="cost-row"><div class="item">${esc(co.item)}</div><div class="price">${esc(co.price)}</div></div>`).join('');
+    html=`<div class="tab-panel active">
+      <div class="section-title">Interval întreținere</div>
+      <div class="info-row"><div class="icon">📅</div><div><div class="label">Program</div><div class="value">${esc(c.intretinere)}</div></div></div>
+      <div class="section-title">Costuri orientative (RON, 2026)</div>
+      <div class="cost-table">${costs}</div>
+      <div class="cost-disclaimer">⚠ Prețuri orientative. Variază în funcție de brand, model, an și service.</div>
+      <div class="section-title">Sfat important</div>
+      <div class="tip-box"><span class="tip-label">💡 SFAT</span>${esc(c.sfat)}</div>
+    </div>`;
+  }
+  modalContent.innerHTML=html;
+  modalContent.scrollTop=0;
+}
+
+function setTab(tab){
+  currentTab=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  renderTab(tab);
+}
+tabBar.addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)setTab(b.dataset.tab);});
+
+function openModal(idx){
+  currentIdx=idx;
+  const c=COMPONENTS[idx];
+  document.getElementById('mNum').textContent=c.id;
+  document.getElementById('modalTitle').textContent=c.name;
+  document.getElementById('mKicker').textContent=`Diesel 3.0L · Componenta ${c.id}/${COMPONENTS.length}`;
+  document.getElementById('mBigIcon').textContent=c.icon;
+  document.getElementById('mCompName').textContent=c.name;
+  document.getElementById('mCompLoc').textContent=c.locatie;
+  document.getElementById('dtcCount').textContent=c.dtc.length;
+  prevBtn.disabled=(idx===0); nextBtn.disabled=(idx===COMPONENTS.length-1);
+  setTab('present');
+  modal.classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){modal.classList.remove('active');document.body.style.overflow='';}
+closeBtn.addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+prevBtn.addEventListener('click',()=>{if(currentIdx>0)openModal(currentIdx-1);});
+nextBtn.addEventListener('click',()=>{if(currentIdx<COMPONENTS.length-1)openModal(currentIdx+1);});
+document.addEventListener('keydown',e=>{
+  if(modal.classList.contains('active')){
+    if(e.key==='Escape')closeModal();
+    if(e.key==='ArrowLeft'&&currentIdx>0)openModal(currentIdx-1);
+    if(e.key==='ArrowRight'&&currentIdx<COMPONENTS.length-1)openModal(currentIdx+1);
+  }
+});
+
+// DTC Search
+function searchDTC(q){
+  q=q.trim().toUpperCase();
+  if(!q){dtcResults.classList.remove('active');return;}
+  const hits=[];
+  COMPONENTS.forEach((c,ci)=>c.dtc.forEach(d=>{
+    if(d.code.toUpperCase().includes(q)||d.desc.toUpperCase().includes(q))
+      hits.push({code:d.code,desc:d.desc,component:c,idx:ci});
+  }));
+  if(!hits.length){
+    dtcResults.innerHTML=`<div class="dtc-result-item" style="cursor:default;"><div class="res-info"><div class="res-desc" style="color:var(--text-dim);">Niciun rezultat pentru "${esc(q)}"</div></div></div>`;
+  } else {
+    dtcResults.innerHTML=hits.slice(0,20).map(m=>`
+      <div class="dtc-result-item" data-idx="${m.idx}">
+        <div class="code-tag">${esc(m.code)}</div>
+        <div class="res-info">
+          <div class="res-desc">${esc(m.desc)}</div>
+          <div class="res-component">→ ${esc(m.component.id+'. '+m.component.name)}</div>
+        </div>
+      </div>`).join('');
+    dtcResults.querySelectorAll('[data-idx]').forEach(el=>el.addEventListener('click',()=>{openModal(+el.dataset.idx);setTab('problems');}));
+  }
+  dtcResults.classList.add('active');
+}
+dtcSearch.addEventListener('input',e=>searchDTC(e.target.value));
+document.addEventListener('click',e=>{if(!e.target.closest('.dtc-section'))dtcResults.classList.remove('active');});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.activeElement===dtcSearch){dtcSearch.value='';dtcResults.classList.remove('active');}});
+</script>
+
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+</script>
+</body>
+</html>
